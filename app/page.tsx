@@ -153,7 +153,7 @@ export default function HomePage() {
               </div>
 
               <Link href="/about">
-                <Button className="bg-primary hover:bg-primary/90 text-primary-foreground font-sans font-semibold transform hover:scale-105 transition-all duration-300 hover:shadow-lg">
+                <Button className="mt-8 bg-primary hover:bg-primary/90 text-primary-foreground font-sans font-semibold transform hover:scale-105 transition-all duration-300 hover:shadow-lg">
                   Learn More About Us
                   <svg
                     className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1"
@@ -169,9 +169,9 @@ export default function HomePage() {
 
             <div className="relative animate-fade-in-right">
               <img
-                src="/placeholder-b50tb.png"
+                src="https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?q=80&w=2070&auto=format&fit=crop"
                 alt="Chattogram Port operations - Heritage Shipping"
-                className="rounded-lg shadow-2xl w-full h-auto transform hover:scale-105 transition-all duration-500 hover:shadow-3xl"
+                className="rounded-lg shadow-2xl w-full h-auto"
               />
               <div className="absolute -bottom-6 -left-6 bg-accent text-accent-foreground p-6 rounded-lg shadow-lg animate-bounce-subtle">
                 <div className="font-serif font-bold text-2xl">ISO 9001</div>

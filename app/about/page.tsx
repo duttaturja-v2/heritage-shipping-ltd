@@ -3,6 +3,7 @@ import { Footer } from "@/components/footer"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
+import { LeaderImage } from "@/components/leader-image"
 
 export default function AboutPage() {
   const milestones = [
@@ -337,13 +338,11 @@ export default function AboutPage() {
                 <CardContent className="p-6 relative z-10">
                   <div className="relative mb-6">
                     <div className="relative overflow-hidden rounded-full mx-auto w-32 h-32 group-hover:scale-110 transition-transform duration-500 bg-gradient-to-br from-primary/20 to-accent/20">
-                      <img
+                      <LeaderImage
                         src={`/placeholder_j8n1g.png?key=j8n1g&height=128&width=128&text=${encodeURIComponent(leader.name.split(" ")[0])}`}
                         alt={leader.name}
+                        fallbackSrc={`/placeholder.svg?height=128&width=128&text=${encodeURIComponent(leader.name.split(" ")[0])}`}
                         className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
-                        onError={(e) => {
-                          e.currentTarget.src = `/placeholder.svg?height=128&width=128&text=${encodeURIComponent(leader.name.split(" ")[0])}`
-                        }}
                       />
                       <div className="absolute inset-0 bg-gradient-to-t from-primary/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
                     </div>

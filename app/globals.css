@@ -1,60 +1,59 @@
-@import "tailwindcss";
-
-@theme inline {
-  --color-background: oklch(1 0 0);
-  --color-foreground: oklch(0.145 0.05 220);
-  --color-card: oklch(1 0 0);
-  --color-card-foreground: oklch(0.145 0.05 220);
-  --color-popover: oklch(1 0 0);
-  --color-popover-foreground: oklch(0.145 0.05 220);
-  --color-primary: oklch(0.205 0.08 220);
-  --color-primary-foreground: oklch(0.985 0 0);
-  --color-secondary: oklch(0.97 0.02 85);
-  --color-secondary-foreground: oklch(0.205 0.08 220);
-  --color-muted: oklch(0.97 0.01 220);
-  --color-muted-foreground: oklch(0.556 0.03 220);
-  --color-accent: oklch(0.45 0.2 85); /* Enhanced accent color contrast for better button visibility */
-  --color-accent-foreground: oklch(0.985 0 0);
-  --color-destructive: oklch(0.577 0.245 27.325);
-  --color-destructive-foreground: oklch(0.985 0 0);
-  --color-border: oklch(0.922 0.01 220);
-  --color-input: oklch(0.985 0 0);
-  --color-ring: oklch(0.65 0.15 85);
-  --radius: 0.5rem;
-
-  /* Updated font mappings to use Inter and Playfair Display */
-  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
-  --font-serif: var(--font-playfair), ui-serif, Georgia, serif;
-  --font-mono: ui-monospace, SFMono-Regular, "SF Mono", Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
-}
-
-.dark {
-  --color-background: oklch(0.145 0.05 220);
-  --color-foreground: oklch(0.985 0 0);
-  --color-card: oklch(0.18 0.05 220);
-  --color-card-foreground: oklch(0.985 0 0);
-  --color-popover: oklch(0.18 0.05 220);
-  --color-popover-foreground: oklch(0.985 0 0);
-  --color-primary: oklch(0.985 0 0);
-  --color-primary-foreground: oklch(0.205 0.08 220);
-  --color-secondary: oklch(0.25 0.03 220);
-  --color-secondary-foreground: oklch(0.985 0 0);
-  --color-muted: oklch(0.25 0.03 220);
-  --color-muted-foreground: oklch(0.708 0.02 220);
-  --color-accent: oklch(0.65 0.15 85);
-  --color-accent-foreground: oklch(0.985 0 0);
-  --color-border: oklch(0.25 0.03 220);
-  --color-input: oklch(0.25 0.03 220);
-  --color-ring: oklch(0.65 0.15 85);
-}
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
 @layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 220 5% 14.5%;
+    --card: 0 0% 100%;
+    --card-foreground: 220 5% 14.5%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 220 5% 14.5%;
+    --primary: 220 8% 20.5%; /* HSL Navy Blue */
+    --primary-foreground: 0 0% 98.5%;
+    --secondary: 85 2% 97%;
+    --secondary-foreground: 220 8% 20.5%;
+    --muted: 220 1% 97%;
+    --muted-foreground: 220 3% 55.6%;
+    --accent: 15 20% 65%; /* HSL Red accent from logo */
+    --accent-foreground: 0 0% 98.5%;
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 98.5%;
+    --border: 220 1% 92.2%;
+    --input: 0 0% 98.5%;
+    --ring: 85 15% 65%;
+    --radius: 0.5rem;
+  }
+
+  .dark {
+    --background: 220 5% 14.5%;
+    --foreground: 0 0% 98.5%;
+    --card: 220 5% 18%;
+    --card-foreground: 0 0% 98.5%;
+    --popover: 220 5% 18%;
+    --popover-foreground: 0 0% 98.5%;
+    --primary: 0 0% 98.5%;
+    --primary-foreground: 220 8% 20.5%;
+    --secondary: 220 3% 25%;
+    --secondary-foreground: 0 0% 98.5%;
+    --muted: 220 3% 25%;
+    --muted-foreground: 220 2% 70.8%;
+    --accent: 85 15% 65%;
+    --accent-foreground: 0 0% 98.5%;
+    --border: 220 3% 25%;
+    --input: 220 3% 25%;
+    --ring: 85 15% 65%;
+  }
+
   * {
     @apply border-border;
   }
+
   body {
     @apply bg-background text-foreground font-sans;
   }
+
   h1,
   h2,
   h3,
@@ -65,8 +64,8 @@
   }
 }
 
-/* Adding custom animations and visual enhancements */
-@layer utilities {
+@layer components {
+  /* Adding custom animations and visual enhancements */
   .animate-fade-in {
     animation: fadeIn 1s ease-in-out;
   }
@@ -92,7 +91,7 @@
   }
 
   .gradient-text {
-    background: linear-gradient(135deg, var(--color-primary), var(--color-accent));
+    background: linear-gradient(135deg, hsl(var(--primary)), hsl(var(--accent)));
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
@@ -105,7 +104,7 @@
   }
 
   .maritime-shadow {
-    box-shadow: 0 10px 40px rgba(32, 74, 135, 0.1), 0 4px 20px rgba(32, 74, 135, 0.05);
+    box-shadow: 0 10px 40px rgba(32, 74, 135, 0.1), 0 4px 20px rgba(220, 38, 38, 0.05);
   }
 
   .hover-lift {
@@ -116,85 +115,75 @@
     transform: translateY(-5px);
     box-shadow: 0 20px 60px rgba(32, 74, 135, 0.15);
   }
-}
 
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(20px);
+  /* Enhanced button styles for HSL brand consistency */
+  .btn-accent {
+    @apply bg-accent text-accent-foreground font-semibold transition-all duration-300 border-2 border-transparent;
   }
-  to {
-    opacity: 1;
-    transform: translateY(0);
+
+  .btn-accent:hover {
+    @apply opacity-90 -translate-y-0.5 border-accent;
+    box-shadow: 0 8px 25px rgba(220, 38, 38, 0.25);
+  }
+
+  /* Responsive image enhancements */
+  .maritime-image {
+    @apply rounded-lg transition-all duration-300;
+    box-shadow: 0 8px 32px rgba(32, 74, 135, 0.12);
+  }
+
+  .maritime-image:hover {
+    @apply scale-105;
+    box-shadow: 0 12px 48px rgba(32, 74, 135, 0.18);
+  }
+
+  /* Timeline enhancements */
+  .timeline-card {
+    @apply relative overflow-hidden;
+  }
+
+  .timeline-card::before {
+    content: "";
+    @apply absolute top-0 left-0 right-0 h-1 transition-transform duration-300 scale-x-0;
+    background: linear-gradient(90deg, hsl(var(--primary)), hsl(var(--accent)));
+  }
+
+  .timeline-card:hover::before {
+    @apply scale-x-100;
   }
 }
 
-@keyframes slideUp {
-  from {
-    opacity: 0;
-    transform: translateY(40px);
+@layer utilities {
+  /* Custom keyframe animations */
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
   }
-  to {
-    opacity: 1;
-    transform: translateY(0);
+
+  @keyframes slideUp {
+    from {
+      opacity: 0;
+      transform: translateY(40px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
   }
-}
 
-@keyframes float {
-  0%,
-  100% {
-    transform: translateY(0px);
+  @keyframes float {
+    0%,
+    100% {
+      transform: translateY(0px);
+    }
+    50% {
+      transform: translateY(-20px);
+    }
   }
-  50% {
-    transform: translateY(-20px);
-  }
-}
-
-/* Enhanced button styles for better visibility */
-.btn-accent {
-  background-color: var(--color-accent);
-  color: black;
-  font-weight: 600;
-  transition: all 0.3s ease;
-}
-
-.btn-accent:hover {
-  background-color: var(--color-accent);
-  opacity: 0.9;
-  transform: translateY(-2px);
-  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
-}
-
-/* Responsive image enhancements */
-.maritime-image {
-  border-radius: var(--radius);
-  box-shadow: 0 8px 32px rgba(32, 74, 135, 0.12);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.maritime-image:hover {
-  transform: scale(1.02);
-  box-shadow: 0 12px 48px rgba(32, 74, 135, 0.18);
-}
-
-/* Timeline enhancements */
-.timeline-card {
-  position: relative;
-  overflow: hidden;
-}
-
-.timeline-card::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 4px;
-  background: linear-gradient(90deg, var(--color-primary), var(--color-accent));
-  transform: scaleX(0);
-  transition: transform 0.3s ease;
-}
-
-.timeline-card:hover::before {
-  transform: scaleX(1);
 }

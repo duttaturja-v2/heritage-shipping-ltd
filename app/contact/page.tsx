@@ -73,6 +73,22 @@ export default function ContactPage() {
       contact: "info@heritageshipping.com",
       phone: "+880 31 123-4567 ext. 100",
     },
+    {
+      icon: () =>(
+        <svg className="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            strokeWidth={2}
+            d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h6v11H9V7z"
+          />
+        </svg>
+      ),
+      title: "Corporate Partnerships",
+      description: "Strategic partnerships and enterprise solutions",
+      contact: "partnerships@heritageshipping.com",
+      phone: "+1 (555) 123-4567 ext. 105",
+    },
   ]
 
   return (
