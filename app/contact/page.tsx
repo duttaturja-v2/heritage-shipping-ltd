@@ -86,7 +86,7 @@ export default function ContactPage() {
       ),
       title: "Corporate Partnerships",
       description: "Strategic partnerships and enterprise solutions",
-      contact: "partnerships@heritageshipping.com",
+      contact: "info@heritageshipping.com",
       phone: "+1 (555) 123-4567 ext. 105",
     },
   ]

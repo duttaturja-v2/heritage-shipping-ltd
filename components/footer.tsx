@@ -10,7 +10,7 @@ export function Footer() {
           <div className="space-y-4">
             <div className="flex items-center space-x-2">
               <img
-                src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/WhatsApp%20Image%202025-08-15%20at%2023.04.10_53bab66b.jpg-cqvS3yxU6u3wPHaQrOwFzTKjH6fEju.jpeg"
+                src="/hsl.jpg"
                 alt="HSL Logo"
                 className="h-10 w-auto"
               />

@@ -58,7 +58,7 @@ export const metadata: Metadata = {
     siteName: "Heritage Shipping Limited",
     images: [
       {
-        url: "/hsl-logo.jpeg",
+        url: "/hsl.jpg",
         width: 1200,
         height: 630,
         alt: "Heritage Shipping Limited - HSL Logo",

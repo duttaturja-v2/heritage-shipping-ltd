@@ -312,7 +312,7 @@ export default function HomePage() {
             Get a personalized quote for your shipping needs or track your existing shipments with our advanced tracking
             system. Experience Bangladesh's premier maritime services.
           </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+          <div className="flex flex-col sm:flex-row gap-4 mb-2 justify-center">
             <Link href="/quote">
               <Button
                 size="lg"

@@ -375,7 +375,7 @@ export default function ServicesPage() {
           </svg>
         </div>
 
-        <div className="container mx-auto px-4 text-center relative z-10 animate-fade-in-up">
+        <div className="container mx-auto px-4 text-center relative z-10 animate-fade-in-up mb-4">
           <h2 className="font-serif font-bold text-3xl md:text-4xl mb-4">Ready to Optimize Your Supply Chain?</h2>
           <p className="font-sans text-lg mb-8 max-w-2xl mx-auto opacity-90">
             Contact our logistics experts today to discuss your shipping requirements and get a customized solution.
