@@ -1,0 +1,90 @@
+version: '3.8'
+
+services:
+  db:
+    image: postgres:15
+    environment:
+      POSTGRES_DB: heritage_shipping
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: ${DB_PASSWORD:-heritage_secure_2024}
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    networks:
+      - heritage_network
+    restart: unless-stopped
+
+  redis:
+    image: redis:7-alpine
+    command: redis-server --appendonly yes
+    volumes:
+      - redis_data:/data
+    networks:
+      - heritage_network
+    restart: unless-stopped
+
+  web:
+    build:
+      context: .
+      dockerfile: Dockerfile.prod
+    environment:
+      - DATABASE_URL=postgresql://postgres:${DB_PASSWORD:-heritage_secure_2024}@db:5432/heritage_shipping
+      - REDIS_URL=redis://redis:6379/0
+      - DJANGO_SECRET_KEY=${DJANGO_SECRET_KEY}
+      - DJANGO_DEBUG=False
+      - DJANGO_ALLOWED_HOSTS=${ALLOWED_HOSTS:-localhost,127.0.0.1}
+    depends_on:
+      - db
+      - redis
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - static_volume:/app/static
+      - media_volume:/app/media
+    networks:
+      - heritage_network
+    restart: unless-stopped
+
+  celery:
+    build:
+      context: .
+      dockerfile: Dockerfile.prod
+    command: celery -A heritage_shipping worker -l info
+    environment:
+      - DATABASE_URL=postgresql://postgres:${DB_PASSWORD:-heritage_secure_2024}@db:5432/heritage_shipping
+      - REDIS_URL=redis://redis:6379/0
+      - DJANGO_SECRET_KEY=${DJANGO_SECRET_KEY}
+    depends_on:
+      - db
+      - redis
+    volumes:
+      - media_volume:/app/media
+    networks:
+      - heritage_network
+    restart: unless-stopped
+
+  celery-beat:
+    build:
+      context: .
+      dockerfile: Dockerfile.prod
+    command: celery -A heritage_shipping beat -l info
+    environment:
+      - DATABASE_URL=postgresql://postgres:${DB_PASSWORD:-heritage_secure_2024}@db:5432/heritage_shipping
+      - REDIS_URL=redis://redis:6379/0
+      - DJANGO_SECRET_KEY=${DJANGO_SECRET_KEY}
+    depends_on:
+      - db
+      - redis
+    networks:
+      - heritage_network
+    restart: unless-stopped
+
+volumes:
+  postgres_data:
+  redis_data:
+  static_volume:
+  media_volume:
+
+networks:
+  heritage_network:
+    driver: bridge
